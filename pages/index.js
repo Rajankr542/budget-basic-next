@@ -14,24 +14,12 @@ export default function Home({ homepage, chapters }) {
   function HeaderDesc() {
     return (
       <div className="homepage_heading_new_container wrapper">
-         <h1 className="homepage_heading_new">{homepage.heading}</h1>
+         <h1 className="homepage_heading_new">
+          {homepage.heading}
+          </h1>
       </div>
     )
   }
-
-  function romanizeNumber (num) {
-    if (isNaN(num))
-        return NaN;
-    var digits = String(+num).split(""),
-        key = ["","C","CC","CCC","CD","D","DC","DCC","DCCC","CM",
-               "","X","XX","XXX","XL","L","LX","LXX","LXXX","XC",
-               "","I","II","III","IV","V","VI","VII","VIII","IX"],
-        roman = "",
-        i = 3;
-    while (i--)
-        roman = (key[+digits.pop() + (i * 10)] || "") + roman;
-    return Array(+digits.join("") + 1).join("M") + roman;
-}
 
   return (
     <>
@@ -61,8 +49,7 @@ export default function Home({ homepage, chapters }) {
               icon: chapter.icon,
               Desc: chapter.Desc,
               totalArticles: chapter.sections.length,
-              index,
-              chapterNumber:romanizeNumber(chapter.Chapter_No)
+              index
             };
             return (
               <React.Fragment key={index}>
@@ -72,7 +59,7 @@ export default function Home({ homepage, chapters }) {
           })}
         </ul>
       </main>
-      <Carousel youtube={homepage.youtube} />
+      {/* <Carousel youtube={homepage.youtube} /> */}
     </>
   );
 }

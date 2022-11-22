@@ -43,7 +43,7 @@ export function generateSubHeadings() {
   const allHeadings = document.querySelectorAll('h3');
   allHeadings.forEach((heading) => {
     const text = heading.childNodes[0].innerText;
-    const id = text.toLowerCase().replace(/\W/g, '-');
+    const id = text?.toLowerCase().replace(/\W/g, '-');
     heading.setAttribute('id', id);
     heading.setAttribute('class', 'section__sub-heading');
   });
@@ -152,9 +152,6 @@ export function stripTable() {
 export function tooltipKeyword(chapter) {
   const tooltipKeywords = document.querySelectorAll('a[href="#"]');
   tooltipKeywords.forEach((keyword, index) => {
-    const tooltip = chapter.tooltips.find(
-      (obj) => obj.keyword.toLowerCase() == keyword.innerText.toLowerCase()
-    );
     keyword.addEventListener('click', (e) => {
       e.preventDefault();
     });
@@ -163,15 +160,6 @@ export function tooltipKeyword(chapter) {
       `${chapter.slug}-tooltip-${index}`
     );
     keyword.setAttribute('class', 'tooltip-wrapper');
-
-    if (tooltip) {
-      const span = document.createElement('span');
-      span.setAttribute('role', 'tooltip');
-      span.setAttribute('class', 'tooltip');
-      span.setAttribute('id', `${chapter.slug}-tooltip-${index}`);
-      span.innerText = tooltip.desc;
-      keyword.appendChild(span);
-    }
   });
 }
 

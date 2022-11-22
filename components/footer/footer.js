@@ -85,9 +85,7 @@ const Footer = () => (
 
         <div className="attribute__links">
          <p className="footer_text_rights">
-         All Right Reserved 2022 <br/>
-         @Centre for Budget and Governance Accountability (CBGA),
-         <br/>Last Updated on December 31, 2021</p>
+         All Right Reserved 2021 @Open Budgets India</p>
         </div>
 
         <div className="attribute__social">

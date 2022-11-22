@@ -28,14 +28,15 @@ const LanguageDropDown = ({isHindi}) => {
       //         </option>
       //     ))}
       // </select>
-      <div className="language-div" onClick={onSelectChange}>
+      <div className="language-div">
         <span> {isHindi ? 'English' : 'हिन्दी' } </span>
       </div>
   )
 }
 
-const Header = ({ desc, color, searchPage, isHindi=false }) => {
+const Header = ({ desc, color, searchPage, isHindi=false, titleNew }) => {
   const { title } = useContext(GlobalContext);
+  // const title = "Analysis of Fiscal Data for Select Districts";
 
   return (
     <header className="header" style={{ backgroundColor: color }}>
@@ -43,7 +44,7 @@ const Header = ({ desc, color, searchPage, isHindi=false }) => {
         <section className="branding">
           <Link href="/">
             <a>
-              <h1 className="branding__logo">{title}</h1>
+              <h1 className="branding__logo">{ titleNew ? titleNew : title}</h1>
             </a>
           </Link>
 
@@ -72,7 +73,7 @@ const Header = ({ desc, color, searchPage, isHindi=false }) => {
               </a>
             </Link>
           )}
-          <LanguageDropDown isHindi={isHindi} />
+          {/* <LanguageDropDown isHindi={isHindi} /> */}
         </section>
         {desc && <section className="header__desc">{desc}</section>}
       </div>

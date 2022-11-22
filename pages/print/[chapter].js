@@ -1,16 +1,10 @@
 import React, { useEffect, useRef, useState} from 'react';
 import { gsap } from 'gsap';
-import Link from 'next/link';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { fetchAPI } from 'lib/api';
 import { sortList, stripTable, LocaleString ,tooltipKeyword } from 'utils/helpers';
 import useWindowDimensions from 'utils/useWindowDimensions';
-import Seo from 'components/seo/seo';
-import Header from 'components/header/header';
-import Menu from 'components/menu/menu';
-import Sidebar from 'components/sidebar/sidebar';
 import useLayoutEffect from 'utils/use-isomorphic-layout-effect';
-import Carousel from 'components/carousel/carousel';
 import { useRouter } from 'next/router';
 
 function goToTopHandler() {
@@ -169,12 +163,12 @@ const SEOTitle = `${chapter?.Title} , ${activeSchemes?.Name}`;
 
   return (
     <>
-      <Seo seo={seo} />
-      <Header color="#212142" titleNew={"Analysis of Fiscal Data for Select Districts"} />
-      {width < 1025 && sections.length > 0 && (
+      {/* <Seo seo={seo} /> */}
+      {/* <Header color="#212142" titleNew={"Analysis of Fiscal Data for Select Districts"} /> */}
+      {/* {width < 1025 && sections.length > 0 && (
         <Menu chapter={chapter} isMobile={width < 1025} />
-      )}
-      <div className="skiptarget">
+      )} */}
+      {/* <div className="skiptarget">
         <span id="maincontent">-</span>
       </div>
       <div className='detailpage-selector-head'>
@@ -199,10 +193,10 @@ const SEOTitle = `${chapter?.Title} , ${activeSchemes?.Name}`;
           View Performance
           </button>
         </div>
-      </div>
+      </div> */}
       {sections.length > 0 ? (
-        <main id="main" className="chapter wrapper">
-          <Sidebar chapter={chapter} sections={sections} activeChapterScheme={activeChapterScheme}/>
+        <main id="main" className="chapter wrapper fullWidth_important">
+          {/* <Sidebar chapter={chapter} sections={sections} activeChapterScheme={activeChapterScheme}/> */}
           <section className="chapter__container">
           <div className="chapter_heading_image">
             <div className='chapter_detail-newsection'>
@@ -250,13 +244,21 @@ const SEOTitle = `${chapter?.Title} , ${activeSchemes?.Name}`;
                 </div>
                 <div className='lowerhalf-text section-2'>
                   <p>{activeChapterScheme?.popup1text}
-                     <span onClick={() => onClickModalButton(1)}> {activeChapterScheme?.popup1button}</span>
+                     {/* <span onClick={() => onClickModalButton(1)}> {activeChapterScheme?.popup1button}</span> */}
                   </p>
+                            <div className='popuptoshowonpage'
+                            ref={ref1}
+                            dangerouslySetInnerHTML={{ __html: toReplaceBaseURLofImage(activeChapterScheme.Pop1Content) }}          
+                            />
                 </div>
                 <div className='lowerhalf-text section-3'>
                   <p>{activeChapterScheme?.popup2text}
-                    <span onClick={() => onClickModalButton(2)}> {activeChapterScheme?.popup2button}</span>
+                    {/* <span onClick={() => onClickModalButton(2)}> {activeChapterScheme?.popup2button}</span> */}
                   </p>
+                  <div className='popuptoshowonpage'
+                    ref={ref2}
+                    dangerouslySetInnerHTML={{ __html: toReplaceBaseURLofImage(activeChapterScheme.pop2Content) }}          
+          />
                 </div>
               </div>
             </div>
@@ -292,7 +294,7 @@ const SEOTitle = `${chapter?.Title} , ${activeSchemes?.Name}`;
           <p>To be updated soon</p>
         </div>
       )}
-    <section className="seggestion-section-chapter-page">
+    {/* <section className="seggestion-section-chapter-page">
       <div className="wrapper">
           <div className="suggestion_head">
             <h2>You may also like</h2>
@@ -325,8 +327,8 @@ const SEOTitle = `${chapter?.Title} , ${activeSchemes?.Name}`;
 
         </div>
       </div>   
-    </section>
-      <Carousel youtube={homepage.youtube} />
+    </section> */}
+      {/* <Carousel youtube={homepage.youtube} /> */}
 
       <a href="#top-of-site-pixel-anchor" type="button" className="back-top">
         <span className="screen-reader-text">Back to Top</span>
@@ -343,7 +345,6 @@ const SEOTitle = `${chapter?.Title} , ${activeSchemes?.Name}`;
 
       {modal1 && (
         <div className='chapter_detaild_model-one'>
-          <div className='close-button-in-popup' onClick={() => setModal1(false)} >x</div>
           <div className='chapter_detaild_model-one-content'
           ref={ref1}
            dangerouslySetInnerHTML={{ __html: toReplaceBaseURLofImage(activeChapterScheme.Pop1Content) }}          
@@ -352,7 +353,6 @@ const SEOTitle = `${chapter?.Title} , ${activeSchemes?.Name}`;
       )}
     {modal2 && (
         <div className='chapter_detaild_model-one model-2'>
-          <div className='close-button-in-popup' onClick={() => setModal2(false)} >x</div>
           <div className='chapter_detaild_model-one-content model-2'
           ref={ref2}
            dangerouslySetInnerHTML={{ __html: toReplaceBaseURLofImage(activeChapterScheme.pop2Content) }}          

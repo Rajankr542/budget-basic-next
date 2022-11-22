@@ -8,9 +8,6 @@ export default function Card({ chapter, isHindi=false }) {
         <li
       className={isHindi ? "chapter_card_parent hn" : "chapter_card_parent"}
     > 
-      <div className="product_card_rom_count_cont">
-        <p className="product_card_roman_number">{chapter?.chapterNumber}</p>
-      </div>
       <Link key={chapter.index} href={`/${chapter.slug}`}>
         <a className="new_card__content no_focus">
           {/* {chapter.totalArticles == 0 && (
@@ -38,7 +35,6 @@ export default function Card({ chapter, isHindi=false }) {
           </picture>
           <div className="card_text_container">
           <h2 className="new_card__title">{chapter.title}</h2>
-          {chapter.Desc && <p className="new_card__desc">{chapter.Desc}</p>}
         </div>
         </a>
       </Link>
